@@ -15,3 +15,21 @@ for (var pixel of img.values()){  //values（） 用来确定像素位置
     pixel.setGreen(newg);
 }
 print(img);
+
+//试图去合成两张图
+var fgImage = new SimpleImage("drewRobert.png");
+var bgImage = new SimpleImage("dinos.png");
+var output = new SimpleImage(fgImage.getWidth(),fgImage.getHeight());//意图让两张图尺寸按照fgImage的尺寸走
+for( var pixel of fgImage.values()){
+    if (pixel.getGreen()==255){
+        var x = pixel.getX();
+        var y = pixel.getY();
+        var bgPixel = bgImage.getPixel(x,y);
+        output.setPixel(x,y,bgPixel);//用bgImage的像素代替fgIamge中的
+    }
+    else{
+        output.setPixel(pixel.getX(),pixel.getY(),pixel);//如果不符合要求，还是按照fgImage的像素去填充到output里去
+    }
+}
+print(output)
+
