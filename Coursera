@@ -1,0 +1,17 @@
+var bgimage = new SimpleImage("chapel.png");
+var fgimage = new SimpleImage("smallpanda.png");
+print(bgimage);
+print(fgimage);
+print(fgimage.getWidth());
+print(bgimage.getHeight());
+print(fgimage.getPixel(0,0));
+
+var img = new SimpleImage(200,200); //设置一个200x200的图片，默认为黑色 RGB(0，0，0)
+print(img);
+for (var pixel of img.values()){  //values（） 用来确定像素位置
+    var newr= pixel.getRed()+255;
+    var newg= pixel.getGreen()+255;
+    pixel.setRed(newr);
+    pixel.setGreen(newg);
+}
+print(img);
